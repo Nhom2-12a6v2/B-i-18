@@ -22,7 +22,7 @@
 
 		<div class="hero">
 			<div class="hero-image">
-				<img src="anh9.jpg" alt="Lớp 12a6">
+				<img src="anh9.jpg" alt="Lớp 12a6" class="zoomable">
 			</div>
 			<div class="hero-content">
 				<h1>Chào mừng ngày 26/3</h1>
@@ -60,20 +60,20 @@
 			<div class="highlights-grid">
 				<div class="highlight-card">
 					<div class="highlight-badge">Học tập</div>
-					<img src="anh9.jpg" alt="Học siêu">
+					<img src="anh9.jpg" alt="Học siêu" class="zoomable">
 					<h3>Học siêu - Chơi đỉnh</h3>
 					<p>Cung cấp năng lượng mạnh mẽ giúp bé học thật vui</p>
 				</div>
 				<div class="highlight-card">
 					<div class="highlight-badge">28/3</div>
-					<img src="anh2.jpg" alt="Thể thao">
+					<img src="anh2.jpg" alt="Thể thao" class="zoomable">
 					<h3>Hoạt động Thể thao</h3>
 					<p>Lớp học năng động với tinh thần vui chơi</p>
 					<a href="thethao.html" class="btn-secondary">Xem thêm</a>
 				</div>
 				<div class="highlight-card">
 					<div class="highlight-badge">Văn nghệ</div>
-					<img src="anh8.jpg" alt="Nghệ thuật">
+					<img src="anh8.jpg" alt="Nghệ thuật" class="zoomable">
 					<h3>Hoạt động Văn nghệ</h3>
 					<p>Tài năng nghệ thuật của lớp 12a6</p>
 					<a href="nghethuat.html" class="btn-secondary">Xem thêm</a>
@@ -84,11 +84,11 @@
 		<section class="gallery-preview">
 			<h2>Hình ảnh hoạt động</h2>
 			<div class="gallery-grid">
-				<div class="gallery-item"><img src="anh1.jpg" alt="Ảnh 1"></div>
-				<div class="gallery-item"><img src="anh2.jpg" alt="Ảnh 2"></div>
-				<div class="gallery-item"><img src="anh4.jpg" alt="Ảnh 4"></div>
-				<div class="gallery-item"><img src="anh5.jpg" alt="Ảnh 5"></div>
-				<div class="gallery-item"><img src="anh6.jpg" alt="Ảnh 6"></div>
+				<div class="gallery-item"><img src="anh1.jpg" alt="Ảnh 1" class="zoomable"></div>
+				<div class="gallery-item"><img src="anh2.jpg" alt="Ảnh 2" class="zoomable"></div>
+				<div class="gallery-item"><img src="anh4.jpg" alt="Ảnh 4" class="zoomable"></div>
+				<div class="gallery-item"><img src="anh5.jpg" alt="Ảnh 5" class="zoomable"></div>
+				<div class="gallery-item"><img src="anh6.jpg" alt="Ảnh 6" class="zoomable"></div>
 			</div>
 		</section>
 
@@ -108,5 +108,40 @@
 				</div>
 			</div>
 		</footer>
+
+		<!-- Image Modal -->
+		<div id="imageModal" class="modal">
+			<span class="close">&times;</span>
+			<img class="modal-content" id="modalImage">
+		</div>
+
+		<script>
+			var modal = document.getElementById("imageModal");
+			var closeBtn = document.querySelector(".close");
+			var zoomableImages = document.querySelectorAll(".zoomable");
+
+			zoomableImages.forEach(img => {
+				img.style.cursor = "pointer";
+				img.addEventListener("click", function() {
+					modal.style.display = "block";
+					document.getElementById("modalImage").src = this.src;
+				});
+			});
+
+			closeBtn.addEventListener("click", function() {
+				modal.style.display = "none";
+			});
+
+			modal.addEventListener("click", function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			});
+
+			document.addEventListener("keydown", function(event) {
+				if (event.key == "Escape") {
+					modal.style.display = "none";
+				}
+			});
+		</script>
 	</body>
-</html>
